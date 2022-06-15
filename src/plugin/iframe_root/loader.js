@@ -7,6 +7,7 @@ define([], function () {
             bootstrap: 'vendor/bootstrap/bootstrap',
             bootstrap_css: 'vendor/bootstrap/css/bootstrap',
             css: 'vendor/require-css/css',
+            dompurify: 'vendor/dompurify/purify',
             datatables: 'vendor/datatables/jquery.dataTables',
             datatables_css: 'vendor/datatables/jquery.dataTables',
             datatables_bootstrap_css: 'vendor/datatables-bootstrap3-plugin/datatables-bootstrap3',
@@ -32,6 +33,7 @@ define([], function () {
             moment: 'vendor/moment/moment',
             numeral: 'vendor/numeral/numeral',
             md5: 'vendor/spark-md5/spark-md5',
+            preact: 'vendor/preact/preact.umd',
             text: 'vendor/requirejs-text/text',
             yaml: 'vendor/requirejs-yaml/yaml',
             uuid: 'vendor/pure-uuid/uuid'

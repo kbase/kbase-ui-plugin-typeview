@@ -41,6 +41,7 @@ define([
             pre(code({
                 class: 'kidl',
                 dataBind: {
+                    // xss safe
                     html: 'typeSpec'
                 }
             }))

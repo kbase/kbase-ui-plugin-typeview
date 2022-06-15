@@ -18,7 +18,6 @@ define([
             super(params);
 
             const {tabs, tabContext} = params;
-            // console.log('tab context?', tabContext);
             this.tabContext = tabContext;
             this.tabsetId = html.genId();
             this.tabs = ko.observableArray();
@@ -161,13 +160,11 @@ define([
 
         doSelectTab(tab) {
             this.deactivateCurrentTab();
-            // console.log('selected tab?', tab);
             this.activateTab(tab);
         }
 
         doClickTab(tab) {
             this.deactivateCurrentTab();
-            // console.log('selected tab?', tab);
             this.activateTab(tab);
         }
     }
@@ -277,6 +274,7 @@ define([
                             flexDirection: 'column'
                         },
                         dataBind: {
+                            // xss safe
                             html: 'panel.content'
                         }
                     }),

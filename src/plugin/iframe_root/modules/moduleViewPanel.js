@@ -185,6 +185,7 @@ define([
                         vm.tabContext.moduleInfo(moduleInfo);
                         vm.tabContext.moduleVersions(moduleVersions);
 
+                        // xss safe
                         container.innerHTML = gen
                             .component({
                                 name: TabsetComponent.name(),

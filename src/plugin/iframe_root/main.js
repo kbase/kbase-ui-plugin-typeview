@@ -2,6 +2,7 @@ require(['loader'], function () {
     'use strict';
     require([
         'bluebird',
+        'dompurify',
         'kbaseUI/integration',
         'kbaseUI/dispatcher',
         'kb_knockout/load',
@@ -9,7 +10,7 @@ require(['loader'], function () {
         'yaml!./config.yml',
         'bootstrap',
         'css!font_awesome'
-    ], (Promise, Integration, Dispatcher, knockoutLoader, props, pluginConfig) => {
+    ], (Promise, DOMPurify, Integration, Dispatcher, knockoutLoader, props, pluginConfig) => {
         const pluginConfigDB = new props.Props({ data: pluginConfig });
         Promise.try(() => {
             const integration = new Integration({
@@ -30,19 +31,23 @@ require(['loader'], function () {
                     // and in the past introduced problems which were resolved
                     // in knockout 3.5.0.
                     ko.options.deferUpdates = true;
+
+                    // replace the html binding handler.
+                    ko.bindingHandlers.html = {
+                        init(element, valueAccessor) {
+                            const value = ko.unwrap(valueAccessor()) || '';
+                            // xss safe
+                            element.innerHTML = DOMPurify.sanitize(value);
+                        },
+                        update(element, valueAccessor) {
+                            const value = ko.unwrap(valueAccessor()) || '';
+                            // xss safe
+                            element.innerHTML = DOMPurify.sanitize(value);
+                        }
+                    };
                 })
                 .then(() => {
                     return integration.start();
-                })
-                .then(() => {
-                    // // This installs all widgets from the config file.
-                    const widgets = pluginConfigDB.getItem('install.widgets', []);
-                    widgets.forEach((widgetDef) => {
-                        integration.runtime
-                            .service('widget')
-                            .getWidgetManager()
-                            .addWidget(widgetDef);
-                    });
                 })
                 .then(() => {
                     // Add routes to panels here

@@ -212,7 +212,6 @@ define(['kb_lib/html', './windowChannel', 'kb_lib/httpUtils'], function (html, W
             });
 
             this.channel.on('clicked', () => {
-                // console.log('lugin clicked?');
                 window.document.body.click();
             });
 
@@ -224,17 +223,6 @@ define(['kb_lib/html', './windowChannel', 'kb_lib/httpUtils'], function (html, W
         }
 
         formPost({ action, params }) {
-            // var state = JSON.stringify(config.state);
-            // let query = {
-            //     provider: config.provider,
-            //     redirecturl: url,
-            //     stayloggedin: config.stayLoggedIn ? 'true' : 'false'
-            // };
-            // let search = new HttpQuery({
-            //     state: JSON.stringify(config.state)
-            // }).toString();
-            // action = this.makePath(endpoints.loginStart)
-
             // Punt over to the auth service
             const t = html.tag;
             const form = t('form');

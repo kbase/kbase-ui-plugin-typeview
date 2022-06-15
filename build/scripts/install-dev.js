@@ -2,11 +2,8 @@
 /*eslint strict: ["error", "global"] */
 'use strict';
 const bluebird = require('bluebird');
-const glob = bluebird.promisify(require('glob').Glob);
 const fs = bluebird.promisifyAll(require('fs-extra'));
-const Terser = require('terser');
 const path = require('path');
-const tar = require('tar');
 
 async function updateFiles(rootDir) {
     const root = rootDir.split('/');

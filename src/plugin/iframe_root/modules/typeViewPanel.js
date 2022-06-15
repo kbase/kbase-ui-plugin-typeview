@@ -153,6 +153,7 @@ define([
 
                 vm.tabContext.typeInfo(typeInfo);
 
+                // xss safe
                 container.innerHTML = gen
                     .component({
                         name: TabsetComponent.name(),
