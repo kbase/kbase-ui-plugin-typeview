@@ -81,7 +81,7 @@ define([
             this.sentCount = 0;
             this.receivedCount = 0;
 
-            this.isDebug = true;
+            this.isDebug = false;
         }
 
         setDebug(isDebug) {

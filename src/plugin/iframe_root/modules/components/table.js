@@ -177,6 +177,7 @@ define([
                     gen.if('column.html',
                         span({
                             dataBind: {
+                                // xss safe
                                 html: 'row[column.name]'
                             }
                         }),
@@ -254,11 +255,6 @@ define([
                 }
             }
         }, [
-            div({
-                dataBind: {
-                    text: 'console.log($component.sortedRows());'
-                }
-            }),
             buildHeader(),
             div({
                 class: style.classes.tableBody
