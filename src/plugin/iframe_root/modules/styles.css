@@ -1,0 +1,15 @@
+.ModuleVersion {
+    font-family: monospace;
+}
+
+.Timestamp {
+    white-space: nowrap;
+}
+
+.TypeVersion {
+    font-family: monospace;
+}
+
+.TypeVersion.-current {
+    font-weight: bold;
+}
