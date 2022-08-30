@@ -1,15 +1,18 @@
 {
-    "name": "kbase-ui-plugin-auth2-client-internal",
-    "description": "Just the internal iframe app",
+    "name": "kbase-ui-plugin-typeview",
+    "description": "A kbase-ui plugin to for viewing types and type modules",
     "keywords": [
         "kbase",
-        "widget"
+        "ui",
+        "plugin",
+        "type",
+        "module"
     ],
     "author": [
         "eapearson@lbl.gov"
     ],
     "install": {
-        "path": "../src/plugin/iframe_root/modules/vendor",
+        "path": "./src/plugin/iframe_root/modules/vendor",
         "sources": {
             "bootstrap": [
                 {
