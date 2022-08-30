@@ -16,24 +16,10 @@ source:
   styles:
     - file: styles.css
 install:
-  widgets:
-    - module: ./typeViewPanel
-      id: kb_typeview_typeViewPanel
-      type: factory
-    - module: ./moduleViewPanel
-      id: kb_typeview_moduleViewPanel
-      type: factory
-  # routes:
-  #     -
-  #         path: ['spec', 'type', {type: 'param', name: 'typeid'}]
-  #         widget: kb_typeview_typeViewPanel
-  #     -
-  #         path: ['spec', 'module', {type: 'param', name: 'moduleid'}]
-  #         widget: kb_typeview_moduleViewPanel
 views:
   - view: type
-    module: typeViewPanel
-    type: factory
+    module: TypePage
+    type: es6
   - view: module
-    module: moduleViewPanel
-    type: factory
+    module: ModulePage
+    type: es6

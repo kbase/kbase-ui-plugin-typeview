@@ -1,0 +1,8 @@
+table.table.TypeView-Overview  th {
+    width: 11em;
+}
+
+.TypeView-Overview pre.-description {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

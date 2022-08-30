@@ -46,7 +46,7 @@ define(['highlight'], function (hljs) {
 
     const linkRegex = /#(.+?)\.(.+?)-(.+?)\.(.+?)#/g;
 
-    function replaceMarkedTypeLinksInSpec(curModule, specText) {
+    function replaceMarkedTypeLinksInSpec(specText) {
         return specText.replace(linkRegex, '<a href="/#spec/type/$1.$2-$3.$4">$2</a>');
     }
 
