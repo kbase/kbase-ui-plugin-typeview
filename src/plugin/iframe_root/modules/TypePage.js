@@ -21,7 +21,7 @@ define([
         }
 
         start(params) {
-            this.runtime.send('ui', 'setTitle', `Type View for "${params.typeid}"`);
+            this.runtime.send('ui', 'setTitle', `Type Specification for "${params.typeid}"`);
             preact.render(html`<${TypeViewController} typeId=${params.typeid} runtime=${this.runtime}/>`, this.node);
             return null;
         }

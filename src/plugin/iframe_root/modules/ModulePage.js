@@ -21,7 +21,7 @@ define([
         }
 
         start(params) {
-            this.runtime.send('ui', 'setTitle', `Module View for "${params.moduleid}"`);
+            this.runtime.send('ui', 'setTitle', `Module Specification for "${params.moduleid}"`);
             preact.render(html`<${ModuleViewController} moduleId=${params.moduleid} runtime=${this.runtime}/>`, this.node);
             return null;
         }
