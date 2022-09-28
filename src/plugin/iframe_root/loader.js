@@ -28,6 +28,7 @@ define([], function () {
             md5: 'vendor/spark-md5/spark-md5',
             preact: 'vendor/preact/preact.umd',
             text: 'vendor/requirejs-text/text',
+            json: 'vendor/requirejs-json/json',
             yaml: 'vendor/requirejs-yaml/yaml',
             uuid: 'vendor/pure-uuid/uuid'
         },
