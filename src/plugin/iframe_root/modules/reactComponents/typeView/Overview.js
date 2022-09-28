@@ -2,6 +2,7 @@ define([
     'preact',
     'htm',
     'reactComponents/common',
+    'reactComponents/TypeIcon',
 
     'bootstrap',
     'css!./Overview.css',
@@ -9,7 +10,8 @@ define([
 ], (
     preact,
     htm,
-    {renderTimestamp}
+    {renderTimestamp},
+    TypeIcon
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
@@ -80,6 +82,14 @@ define([
                             </th>
                             <td>
                                 ${this.renderModuleVersions(module, this.props.typeInfo.module_vers)}
+                            </td>
+                        </tr>
+                         <tr>
+                            <th>
+                                Icon
+                            </th>
+                            <td>
+                                <${TypeIcon} typeName=${name} />
                             </td>
                         </tr>
                         <tr>

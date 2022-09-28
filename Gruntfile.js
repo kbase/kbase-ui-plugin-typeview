@@ -28,6 +28,15 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: 'node_modules/htm/dist/htm.umd.js',
                 dest: './src/plugin/iframe_root/modules/vendor/htm'
+            },
+            requirejsJson: {
+                expand: true,
+                flatten: false,
+                cwd: 'node_modules/requirejs-json',
+                src: [
+                    'json.js'
+                ],
+                dest: './src/plugin/iframe_root/modules/vendor/requirejs-json'
             }
         },
         clean: {
