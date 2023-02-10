@@ -3,17 +3,21 @@
 package:
   name: typeview
   description: The typeview panel and associated widgets
-install:
-  routes:
-    - path: spec/type/:typeid?:-tab
-      view: type
-      authorization: false
-      reentrant: false
-    - path: spec/module/:moduleid?:-tab
-      view: module
-      authorization: false
-      reentrant: false
-    - path: typeview/type/:typeid?:-tab
-      view: type
-      authorization: false
-      reentrant: false
+services:
+  route:
+    autoload: true
+    routes:
+      - path: ^(spec|typeview)$/type/:typeid
+        # path: spec/type/:typeid?:-tab
+        view: type
+        authorization: false
+        reentrant: false
+      - path: spec/module/:moduleid
+        # path: spec/module/:moduleid?:-tab
+        view: module
+        authorization: false
+        reentrant: false
+      # - path: typeview/type/:typeid?:-tab
+      #   view: type
+      #   authorization: false
+      #   reentrant: false
