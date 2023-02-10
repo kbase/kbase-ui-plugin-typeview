@@ -28,7 +28,7 @@ define([
                 style: {
                 },
                 render: (module) => {
-                    return module;
+                    return html`<a href="/#spec/module/${module}" target="_blank">${module}</a>`;
                 }
             }, {
                 id: 'name',
