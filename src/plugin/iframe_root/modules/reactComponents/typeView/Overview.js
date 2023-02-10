@@ -65,7 +65,7 @@ define([
                                 Module
                             </th>
                             <td>
-                                ${module}
+                                <a href="/#spec/module/${module}" target="_blank">${module}</a>
                             </td>
                         </tr>
                         <tr>
