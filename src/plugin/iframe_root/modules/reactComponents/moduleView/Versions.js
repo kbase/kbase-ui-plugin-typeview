@@ -3,6 +3,7 @@ define([
     'htm',
     'reactComponents/DataTable7',
     'reactComponents/common',
+    'reactComponents/UILink',
 
     'bootstrap',
     'css!./Versions.css'
@@ -10,13 +11,13 @@ define([
     preact,
     htm,
     DataTable,
-    {renderTimestamp}
+    {renderTimestamp},
+    UILink
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
 
     class Versions extends Component {
-       
         render() {
             const columns = [{
                 id: 'version',
@@ -26,22 +27,26 @@ define([
                 render: (version) => {
                     if (version === this.props.version) {
                         return html`
-                            <a 
-                                href="/#spec/module/${this.props.versions.mod}-${version}" 
-                                target="_blank"
-                                style=${{fontFamily: 'monospace', fontWeight: 'bold'}}                            
+                            <${UILink}
+                                path=${`spec/module/${this.props.versions.mod}-${version}`}
+                                type="kbaseui"
+                                newWindow=${true}
+                                style=${{fontFamily: 'monospace', fontWeight: 'bold'}}         
                             >
-                                ${version} (current)
-                            </a>`;
+                                ${version} (this one)
+                            </>
+                        `;
                     } 
                     return html`
-                        <a 
-                            href="/#spec/module/${this.props.versions.mod}-${version}" 
-                            target="_blank"
-                            style=${{fontFamily: 'monospace'}}                            
+                        <${UILink}
+                            path=${`spec/module/${this.props.versions.mod}-${version}`}
+                            type="kbaseui"
+                            newWindow=${true}
+                            style=${{fontFamily: 'monospace'}}
                         >
                             ${version}
-                        </a>`;
+                        </>
+                    `;
                 }
             }, {
                 id: 'version',
@@ -58,7 +63,6 @@ define([
                     version
                 };
             });
-
 
             return html`
                 <${DataTable} heights=${{row: 30, header: 30}} flex=${true} columns=${columns} dataSource=${dataSource} />

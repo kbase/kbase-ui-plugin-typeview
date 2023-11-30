@@ -3,13 +3,15 @@ define([
     'htm',
     'reactComponents/DataTable7',
     'reactComponents/Alert',
+    'reactComponents/UILink',
 
     'bootstrap',
 ], (
     preact,
     htm,
     DataTable,
-    Alert
+    Alert,
+    UILink
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
@@ -26,8 +28,16 @@ define([
                 label: 'Module',
                 style: {
                 },
-                render: (module) => {
-                   return html`<a href="/#spec/module/${module}" target="_blank">${module}</a>`;
+                render: (module) => { 
+                    return html`
+                        <${UILink} 
+                            path=${`spec/module/${module}`}
+                            type="kbaseui"
+                            newWindow=${true}
+                        >
+                        ${module}
+                        </>
+                    `;
                 }
             }, {
                 id: 'name',
@@ -35,7 +45,15 @@ define([
                 style: {
                 },
                 render: (name, {id}) => {
-                    return html`<a href="/#spec/type/${id}" target="_blank">${name}</a>`;
+                    return html`
+                        <${UILink} 
+                            path=${`spec/type/${id}`}
+                            type="kbaseui"
+                            newWindow=${true}
+                        >
+                        ${name}
+                        </>
+                    `;
                 }
             },{
                 id: 'version',
@@ -43,7 +61,15 @@ define([
                 style: {
                 },
                 render: (version, {id}) => {
-                    return html`<a href="/#spec/type/${id}" target="_blank">${version}</a>`;
+                    return html`
+                        <${UILink} 
+                            path=${`spec/type/${id}`}
+                            type="kbaseui"
+                            newWindow=${true}
+                        >
+                        ${version}
+                        </>
+                    `;
                 }
             }];
 

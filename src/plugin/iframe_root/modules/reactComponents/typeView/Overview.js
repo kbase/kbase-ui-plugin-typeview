@@ -3,6 +3,7 @@ define([
     'htm',
     'reactComponents/common',
     'reactComponents/TypeIcon',
+    'reactComponents/UILink',
 
     'bootstrap',
     'css!./Overview.css',
@@ -11,18 +12,27 @@ define([
     preact,
     htm,
     {renderTimestamp},
-    TypeIcon
+    TypeIcon,
+    UILink
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
 
     class Overview extends Component {
+
         renderModuleVersions(module, versions) {
             const rows = versions.map((ver) => {
                 return html`
                     <tr>
                         <td>
-                            <a href="/#spec/module/${module}-${ver}" target="_blank" className="ModuleVersion">${ver}</a>
+                            <${UILink} 
+                                path=${`spec/module/${module}-${ver}`}
+                                type='kbaseui'
+                                newWindow=${true}
+                                className="ModuleVersion"
+                            >
+                             ${ver}
+                            </>
                         </td>
                         <td>
                             ${renderTimestamp(ver)} 
@@ -65,7 +75,13 @@ define([
                                 Module
                             </th>
                             <td>
-                                <a href="/#spec/module/${module}" target="_blank">${module}</a>
+                                <${UILink} 
+                                    path=${`spec/module/${module}`} 
+                                    type='kbaseui' 
+                                    newWindow=${true}
+                                >
+                                    ${module}
+                                </>
                             </td>
                         </tr>
                         <tr>

@@ -4,6 +4,7 @@ define([
     'reactComponents/DataTable7',
     'reactComponents/Alert',
     'reactComponents/common',
+    'reactComponents/UILink',
 
     'bootstrap',
 ], (
@@ -11,7 +12,8 @@ define([
     htm,
     DataTable,
     Alert, 
-    {renderTimestamp}
+    {renderTimestamp},
+    UILink
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
@@ -19,8 +21,8 @@ define([
     class Versions extends Component {
        
         render() {
-             const modules = Object.entries(this.props.included).map(([moduleName, version]) => {
-                return {moduleName, version}
+             const modules = Object.entries(this.props.included).map(([name, version]) => {
+                return {name, version}
             });
             if (modules.length === 0) {
                 return html`<${Alert} type="info" message="No modules are included in this module" />`;
@@ -31,7 +33,15 @@ define([
                 style: {
                 },
                 render: (name, {version}) => {
-                    return html`<a href="/#spec/module/${name}-${version}" target="_blank">${name}</a>`;
+                    return html`
+                        <${UILink}
+                            path=${`spec/module/${name}-${version}`}
+                            type="kbaseui"
+                            newWindow=${true}
+                        >
+                            ${name}
+                        </>
+                    `;
                 }
             }, {
                 id: 'version',

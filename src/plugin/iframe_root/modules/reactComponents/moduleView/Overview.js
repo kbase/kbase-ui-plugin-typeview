@@ -2,6 +2,7 @@ define([
     'preact',
     'htm',
     'reactComponents/common',
+    'reactComponents/UILink',
 
     'bootstrap',
     'css!./Overview.css',
@@ -9,7 +10,8 @@ define([
 ], (
     preact,
     htm,
-    {renderTimestamp}
+    {renderTimestamp},
+    UILink
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
@@ -20,7 +22,14 @@ define([
                 return html`
                     <tr>
                         <td>
-                            <a href="/#spec/module/${module}-${ver}" target="_blank" className="ModuleVersion">${ver}</a>
+                            <${UILink} 
+                                path=${`spec/module/${module}-${ver}`}
+                                type='kbaseui'
+                                newWindow=${true}
+                                className="ModuleVersion"
+                            >
+                             ${ver}
+                            </>
                         </td>
                         <td>
                             ${renderTimestamp(ver)}
@@ -47,13 +56,19 @@ define([
             return this.props.info.owners.map((owner) => {
                 return html`
                     <div>
-                        <a href=${`/#people/${owner}`} target="_blank">${owner}</a>
+                        <${UILink} 
+                            path=${`people/${owner}`}
+                            type='kbaseui'
+                            newWindow=${true}
+                        >
+                        ${owner}
+                        </>
                     </div>
                 `;
             })
         }
         render() {
-            const {name, version, info: {description}} = this.props;
+            const {name, version, info: {ver, description}} = this.props;
            
             return html`
                 <table className="table table-striped table-bordered TypeView-Overview">
@@ -71,7 +86,7 @@ define([
                                 Version
                             </th>
                             <td>
-                                <span style=${{fontFamily: 'monospace'}}>${version}</span>
+                                <span style=${{fontFamily: 'monospace'}}>${ver}</span>
                             </td>
                         </tr>
                         <tr>

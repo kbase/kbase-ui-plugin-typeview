@@ -47,7 +47,10 @@ define(['highlight'], function (hljs) {
     const linkRegex = /#(.+?)\.(.+?)-(.+?)\.(.+?)#/g;
 
     function replaceMarkedTypeLinksInSpec(specText) {
-        return specText.replace(linkRegex, '<a href="/#spec/type/$1.$2-$3.$4">$2</a>');
+        const hostname = window.location.hostname.split('.').slice(1).join('.');
+        const url = new URL(window.location.href);
+        url.hostname = hostname;
+        return specText.replace(linkRegex, `<a href="${url.origin}/legacy/spec/type/$1.$2-$3.$4" target="_blank">$2</a>`);
     }
 
     let lastGeneratedSpecPrefix = 0;
