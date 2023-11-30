@@ -1,5 +1,5 @@
 const bluebird = require('bluebird');
-const glob = bluebird.promisify(require('glob').Glob);
+const {glob} = require('glob');
 const fs = bluebird.promisifyAll(require('fs-extra'));
 const path = require('path');
 

@@ -3,6 +3,7 @@ define([
     'htm',
     'reactComponents/DataTable7',
     'reactComponents/Alert',
+    'reactComponents/UILink',
 
     'bootstrap',
     'css!styles.css'
@@ -10,7 +11,8 @@ define([
     preact,
     htm,
     DataTable,
-    Alert
+    Alert,
+    UILink
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
@@ -30,7 +32,15 @@ define([
                 id: 'name',
                 label: 'Type Name',
                 render: (name, {id}) => {
-                    return html`<a href="/#spec/type/${id}" target="_blank">${name}</a>`;
+                    return html`
+                        <${UILink}
+                            path=${`spec/type/${id}`}
+                            type="kbaseui"
+                            newWindow=${true}
+                        >
+                            ${name}
+                        </>
+                    `
                 }
             }, {
                 id: 'version',

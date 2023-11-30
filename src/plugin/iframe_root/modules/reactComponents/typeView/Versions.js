@@ -2,6 +2,7 @@ define([
     'preact',
     'htm',
     'reactComponents/DataTable7',
+    'reactComponents/UILink',
 
     'bootstrap',
     'css!styles.css'
@@ -9,6 +10,7 @@ define([
     preact,
     htm,
     DataTable,
+    UILink
 ) => {
     const {Component} = preact;
     const html = htm.bind(preact.h);
@@ -17,15 +19,7 @@ define([
        
         render() {
             const columns = [
-            //     {
-            //     id: 'id',
-            //     label: 'Type Name',
-            //     style: {
-            //     },
-            //     render: (id, {name}) => {
-            //         return html`<a href="/#spec/type/${id}" target="_blank">${name}</a>`;
-            //     }
-            // },
+
              {
                 id: 'version',
                 label: 'Type Version',
@@ -35,19 +29,21 @@ define([
                     const isCurrentType = this.props.typeInfo.type_def === id;
                     const [classNames, suffix] =  (() => {
                         if (isCurrentType) {
-                            return [['-current'], ' (current)'];
+                            return [['-current'], ' (this one)'];
                         }
                         return [[], ''];
                     })();
 
                     return html`
-                        <a 
-                            href="/#spec/type/${id}" 
-                            target="_blank" 
+                        <${UILink}
+                            path=${`spec/type/${id}`}
+                            type="kbaseui"
+                            newWindow=${true}
                             className=${['TypeVersion'].concat(classNames).join(' ')}
                         >
                             ${version}${suffix}
-                        </a>`;
+                        </>
+                        `;
                 }
             }];
 
